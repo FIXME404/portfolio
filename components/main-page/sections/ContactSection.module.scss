@@ -1,0 +1,125 @@
+@use '../../../styles/breakpoints' as mixins;
+@import '../../../styles/font-size';
+
+.contact-section {
+  grid-column: container-start / container-end;
+  text-align: center;
+  margin: 10rem 0;
+  overflow: hidden;
+
+  //Section Heading
+  &__heading {
+    font-size: font-size(font-size-large);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 2rem 0 8rem;
+  }
+
+  //Contact Form
+  &__form {
+    width: clamp(30rem, 50%, 50rem);
+    margin: 0 auto;
+
+    //Form Success Messages
+    &--success,
+    &--error {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin: 2rem 0;
+      padding: 2rem;
+
+      i {
+        font-size: 10rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    //Success Message
+    &--success {
+      i {
+        color: var(--color-quaternary);
+      }
+
+      span:nth-child(2) {
+        font-size: font-size(font-size-medium);
+        color: var(--color-quaternary);
+        font-weight: 600;
+      }
+
+      span:nth-child(3) {
+        font-size: font-size(font-size-regular);
+        color: var(--color-primary);
+        font-weight: 500;
+      }
+    }
+
+    //Error Message
+    &--error {
+      i {
+        color: red;
+      }
+
+      span:nth-child(2) {
+        font-size: font-size(font-size-medium);
+        font-weight: 600;
+        color: red;
+      }
+    }
+
+    //Submit Button
+    &--submit {
+      position: relative;
+      width: 100%;
+      padding: 1.2rem;
+      color: white;
+      background-color: var(--color-quaternary);
+      font-size: font-size(font-size-regular);
+      border: none;
+      border-radius: 0.7rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    //Submit Button Hover
+    &--submit:hover {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+    //Invalid Input
+    &--invalid {
+      div input[type='email'] {
+        border-bottom: 1px solid red !important;
+        & ~ label {
+          color: red;
+        }
+      }
+    }
+
+    //Invalid email text
+    &--invalid-email {
+      font-size: font-size(font-size-extra-small);
+      color: red;
+      margin: 0.5rem 0;
+    }
+  }
+
+  //Bottom closing tag
+  &__closing-tag {
+    font-size: font-size(font-size-xlarge);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 8rem 0 0;
+  }
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 480px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-mobile {
+    margin: 5rem 0;
+
+    &__closing-tag {
+      font-size: 1.5rem;
+    }
+  }
+}

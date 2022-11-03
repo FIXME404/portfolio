@@ -1,0 +1,43 @@
+@use '../../_breakpoints.scss' as mixins;
+@import '../../variables';
+
+.socials-sidebar {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  opacity: 0;
+  z-index: 2;
+  animation: fadeIn 2.5s ease-in-out forwards;
+
+  //Sidebar content
+  &__socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    //Socials item
+    &--social {
+      margin: 1rem 0;
+
+      //Socials link
+      i {
+        font-size: font-size(font-size-regular);
+      }
+    }
+  }
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-mobile-large {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}

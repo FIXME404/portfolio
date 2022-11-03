@@ -1,0 +1,335 @@
+@use '../../styles/_breakpoints.scss' as mixins;
+@import '../../styles/_font-size';
+
+.header {
+  // Hamburger Lines
+  &.open .header__menu--line {
+    background-color: transparent;
+  }
+
+  &.open .header__menu--line::before {
+    transform: rotate(45deg);
+  }
+
+  &.open .header__menu--line::after {
+    transform: rotate(-45deg);
+  }
+
+  &.open .header__menu--line::before,
+  &.open .header__menu--line::after {
+    top: 0;
+    width: 4rem;
+    height: 0.2rem;
+    background-color: var(--color-primary);
+    top: 0;
+    left: -2rem;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all 0.5s ease-in-out;
+  } //End of Hamburger Lines
+  //Right Side entrance on loading
+  animation: fadeIn 0.5s ease-in-out;
+
+  //Overlay
+  &__overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-tertiary);
+    position: fixed;
+    opacity: 0;
+    display: none;
+    z-index: 10;
+  }
+
+  //Navbar
+  &__nav {
+    width: 100%;
+    height: 7rem;
+    line-height: 7rem;
+
+    display: flex;
+    justify-content: space-around;
+
+    //Logo
+    i {
+      margin: auto 0;
+      font-size: 3rem;
+      color: var(--color-quaternary);
+    }
+
+    //UL of the navbar
+    &--links {
+      display: flex;
+
+      //Links of the navbar
+      &__items {
+        position: relative;
+
+        a:link,
+        a:visited {
+          padding: 0 3rem;
+          font-weight: 300;
+          font-size: font-size(font-size-extra-small);
+          color: var(--color-primary);
+        }
+
+        //hover effect
+        a:before,
+        a:after {
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          font-size: font-size(font-size-extra-small);
+          transition: all 0.3s;
+        }
+
+        a:before {
+          content: '<';
+          left: 2rem;
+        }
+
+        a:after {
+          content: '>';
+          right: 2rem;
+        }
+
+        a:hover:before {
+          opacity: 1;
+          transform: translateX(-1.5rem);
+        }
+        a:hover:after {
+          opacity: 1;
+          transform: translateX(1.5rem);
+        } //end of hover effect
+      } //end of links of the navbar
+
+      //Toggle Dark mode button
+      &__toggle-container {
+        display: flex;
+        align-items: center;
+
+        //Entire Switch
+        input[type='checkbox'] {
+          position: relative;
+          width: 7.5rem;
+          height: 3rem;
+          margin: 0 4rem;
+          cursor: pointer;
+          background-color: var(--color-primary);
+          border-radius: 2.5rem;
+          appearance: none;
+          transition: all 0.5s ease-in-out;
+        }
+
+        //Switch's Circle
+        input[type='checkbox']::before {
+          content: '\f186';
+          font-family: 'Font Awesome 6 Free';
+          font-weight: 900;
+          font-size: 1.7rem;
+          text-align: center;
+          color: var(--color-primary);
+          background-color: var(--color-secondary);
+          position: absolute;
+          left: 0.2rem;
+          top: 0.1rem;
+          width: 2.8rem;
+          height: 93%;
+          padding-top: 0.3rem;
+          border-radius: 50%;
+          transition: all 0.5s ease-in-out;
+        }
+
+        //Switch's Circle Light Mode
+        input:checked[type='checkbox']::before {
+          content: '\f185';
+          left: 60%;
+          height: 88%;
+          top: 0.2rem;
+        }
+
+        //Text alignment
+        input:not(:checked)[type='checkbox']::after,
+        input:checked[type='checkbox']::after {
+          position: absolute;
+          top: 0.6rem;
+          font-size: 1.4rem;
+          color: var(--color-secondary);
+        }
+
+        input:checked[type='checkbox']::after {
+          left: 1rem;
+          content: 'Light';
+        }
+
+        input:not(:checked)[type='checkbox']::after {
+          right: 1rem;
+          content: 'Dark';
+        }
+      } //end of toggle dark mode button
+    } //end of UL of the navbar
+  } //end of Navbar
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 1300px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-desktop {
+    &__nav {
+      &--links {
+        &__items {
+          a:link,
+          a:visited {
+            font-size: 1.7rem;
+          }
+        }
+      }
+    }
+  } //end of 1300px breakpoint
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-tablet {
+    //SIDE MENU FOR TABLETS
+
+    // Side menu
+    &__nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 25rem;
+      height: 100vh;
+      background-color: var(--color-secondary);
+      line-height: initial;
+      flex-direction: column;
+      text-align: center;
+      z-index: 20;
+      transform: perspective(70rem) rotateY(0.5turn);
+      transform-origin: top left;
+      transition: transform 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      animation: none;
+
+      //links
+      &--links {
+        height: 80%;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        //links
+        &__items {
+          animation: initial;
+
+          a:link,
+          a:visited {
+            position: static;
+          }
+
+          //hover effect
+          a:link,
+          a:visited,
+          a::before,
+          a::after {
+            font-size: 2rem;
+            padding: 0;
+          }
+
+          a::before {
+            left: 8rem;
+          }
+
+          a::after {
+            right: 8rem;
+          }
+
+          a:hover::before,
+          a:active::before {
+            transform: translateX(-5rem);
+          }
+
+          a:hover::after,
+          a:active::after {
+            transform: translateX(5rem);
+          }
+        } //end of links
+
+        //dark mode button
+        &__toggle-container {
+          justify-content: center;
+        }
+      } //end of links
+    } //end of Side menu
+
+    //Menu Opener
+    &.open nav {
+      transform: rotateY(0);
+    }
+
+    //Dotted Top Menu box
+    &__menu {
+      height: 3rem;
+      width: 3rem;
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      padding: 2.5rem;
+      background-color: transparent;
+      z-index: 20;
+      cursor: pointer;
+
+      &--line,
+      &--line::before,
+      &--line::after {
+        content: '';
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: var(--color-primary);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        transition: all 0.5s ease-in-out;
+      }
+
+      &--line::before {
+        top: -2.8rem;
+      }
+
+      &--line::after {
+        top: 1.9rem;
+      }
+    } //end of Menu Opener
+
+    //Overlay
+    &__overlay.open {
+      display: block;
+      opacity: 0.8;
+    }
+  }
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 480px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-mobile {
+    &__nav {
+      width: 21rem;
+    }
+  }
+}
+
+@keyframes rightEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,49 @@
+@use '../styles/breakpoints' as mixins;
+@import '../styles/font-size';
+
+.section {
+  grid-column: container-start / container-end;
+  text-align: center;
+  color: var(--color-primary);
+
+  //Heading
+  &__heading {
+    font-size: font-size(font-size-xxlarge);
+    font-weight: 700;
+    margin: 7rem auto;
+  }
+
+  //Form
+  &__form {
+    width: 50%;
+    margin: 5rem auto 0;
+
+    &--submit-btn {
+      position: relative;
+      cursor: pointer;
+      width: 100%;
+      padding: 1rem;
+      color: white;
+      background-color: var(--color-quaternary);
+      font-size: font-size(font-size-regular);
+      border-radius: 0.7rem;
+      border: none;
+    }
+  }
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-tablet {
+    //Form
+    &__form {
+      width: 70%;
+    }
+  } //End of 800px breakpoint
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-mobile-large {
+    //Form
+    &__form {
+      width: 85%;
+    }
+  } //End of 600px breakpoint
+} //End of section

@@ -1,0 +1,37 @@
+@use '../../_breakpoints.scss' as mixins;
+@import '../../variables';
+
+.scroll {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+
+  &__button {
+    width: 4rem;
+    height: 4rem;
+    color: var(--color-primary);
+    background-color: transparent;
+    border: none;
+    font-size: font-size(font-size-large);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
+
+    &:hover {
+      transform: translateY(-0.5rem);
+    }
+
+    i {
+      background-color: transparent;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
