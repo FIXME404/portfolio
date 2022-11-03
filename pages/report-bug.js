@@ -1,8 +1,5 @@
 import styles from './report-bug.module.scss';
-import Link from 'next/link';
 import Navbar from '../components/UI/Navbar';
-import InputField from '../components/inputs/InputField';
-import InputArea from '../components/inputs/InputArea';
 import ReportBugForm from '../components/forms/ReportBugForm';
 
 function ReportBugPage() {
@@ -17,9 +14,9 @@ function ReportBugPage() {
     <div className={styles['section']}>
       {/* Navbar */}
       <Navbar links={navLinks} />
-
       {/* Heading */}
       <h1 className={styles['section__heading']}>{`< Report A Bug >`}</h1>
+      {/* Form */}
       <ReportBugForm />
     </div>
   );

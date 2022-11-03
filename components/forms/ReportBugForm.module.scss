@@ -1,7 +1,10 @@
+@use '../../styles/breakpoints' as mixins;
+@import '../../styles/_font-size';
+
 .form {
   //Form
-  width: 35%;
-  margin: 5rem auto 0;
+  width: 50%;
+  margin: 5rem auto;
 
   &__submit-btn {
     position: relative;
@@ -20,6 +23,7 @@
     position: relative;
 
     //Input field styling
+
     input,
     textarea {
       width: 100%;
@@ -71,18 +75,33 @@
       transition: 0.2s;
     }
 
+    //if message is invalid styles
     &--invalid {
       textarea {
-        border-bottom: 0.1rem solid var(--color-quaternary);
+        border-bottom: 0.1rem solid red;
       }
       label {
-        color: var(--color-quaternary);
+        color: red;
       }
     }
 
+    //error message styling
     &--error {
-      color: tomato;
+      color: red;
       margin-bottom: 3rem;
+      font-size: font-size(font-size-small);
     }
   }
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-tablet {
+    //Form
+    width: 70%;
+  } //End of 800px breakpoint
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-mobile-large {
+    //Form
+    width: 85%;
+  } //End of 600px breakpoint
 }
