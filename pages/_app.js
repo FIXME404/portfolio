@@ -1,5 +1,6 @@
 import '../styles/globals.scss';
 import Head from 'next/head';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -8,8 +9,8 @@ function MyApp({ Component, pageProps }) {
         <title>Bryan's Portfolio</title>
         <meta name='description' content={`Bryan's awesome portfolio`} />
         <link rel='icon' href='/favicon.ico' />
-        <script src='https://kit.fontawesome.com/1161eb7072.js' crossOrigin='anonymous'></script>
       </Head>
+      <Script src='https://kit.fontawesome.com/1161eb7072.js' crossOrigin='anonymous' strategy='lazyOnload'></Script>
       <Component {...pageProps} />
     </>
   );

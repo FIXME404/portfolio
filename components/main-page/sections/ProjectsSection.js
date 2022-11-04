@@ -36,7 +36,7 @@ function ProjectsSection() {
               An interactive and easy-to-use website that generates Java code. Quickly generates your Java Class with abstract methods and Javadoc.
             </p>
             {/* button */}
-            <Link href='/java-code-generator'>View Project</Link>
+            <Link href='/projects/java-code-generator'>View Project</Link>
           </div>
         </div>
 

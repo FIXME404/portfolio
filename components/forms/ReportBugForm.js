@@ -1,21 +1,30 @@
 import styles from './ReportBugForm.module.scss';
 import useForm from '../hooks/use-form';
-import { useRef, useEffect, useReducer } from 'react';
+import { useRef, useReducer } from 'react';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 //Validity checker function that checks if the input is empty
 const isNotEmpty = name => name.trim() !== '';
+
+//reducer initial state
+const initialState = {
+  displayForm: true,
+  isSending: false,
+  isSucessful: false,
+  isError: false
+};
 
 //Form state reducer
 const formReducer = (state, action) => {
   switch (action.type) {
     case 'DISPLAY_FORM':
-      return { ...state, displayForm: !state.displayForm };
+      return { ...state, displayForm: action.boolean };
     case 'SENDING':
-      return { ...state, isSending: !state.isSending };
+      return { ...state, isSending: action.boolean };
     case 'SUCCESS':
-      return { ...state, isSucessful: !state.isSucessful };
+      return { ...state, isSucessful: action.boolean };
     case 'ERROR':
-      return { ...state, isError: !state.isError };
+      return { ...state, isError: action.boolean };
     default:
       return state;
   }
@@ -26,10 +35,18 @@ function ReportBugForm() {
   const formRef = useRef();
 
   //Form state reducer
-  const [formState, dispatchFormState] = useReducer(formReducer, { displayForm: true, isSending: false, isSucessful: false, isError: false });
+  const [formState, dispatchFormState] = useReducer(formReducer, initialState);
 
   //Message custom hook
   const { input: messageInput, isInputInvalid: isMessageInvalid, handleInputChange: messageChangeHandler, handleInputBlur: messageBlurHandler, reset: messageReset } = useForm(isNotEmpty);
+
+  //close message button
+  const closeMessageHandler = () => {
+    dispatchFormState({ type: 'DISPLAY_FORM', boolean: true });
+    dispatchFormState({ type: 'SUCCESS', boolean: false });
+    dispatchFormState({ type: 'ERROR', boolean: false });
+    messageReset();
+  };
 
   //Submit handler
   const onSubmitHandler = e => {
@@ -47,8 +64,8 @@ function ReportBugForm() {
 
   // Post request to API
   const postData = async input => {
-    dispatchFormState({ type: 'DISPLAY_FORM' });
-    dispatchFormState({ type: 'SENDING' });
+    dispatchFormState({ type: 'DISPLAY_FORM', boolean: false });
+    dispatchFormState({ type: 'SENDING', boolean: true });
 
     const response = await fetch('/api/reportBug', {
       method: 'POST',
@@ -58,14 +75,14 @@ function ReportBugForm() {
       }
     });
 
-    dispatchFormState({ type: 'SENDING' });
+    dispatchFormState({ type: 'SENDING', boolean: false });
 
     //Checks for response status
     const status = response.status;
     if (status === 201 || status === 200) {
-      dispatchFormState({ type: 'SUCCESS' });
-    } else if (status <= 422) {
-      dispatchFormState({ type: 'ERROR' });
+      dispatchFormState({ type: 'SUCCESS', boolean: true });
+    } else if (status >= 400) {
+      dispatchFormState({ type: 'ERROR', boolean: true });
     }
   };
 
@@ -109,26 +126,51 @@ function ReportBugForm() {
     sideEffectState
   );
 
-  let sideEffectState = null;
-
   //Switch state for side effects form state
-  switch (formState) {
+  let sideEffectState = null;
+  switch (true) {
     case formState.isSending:
-      sideEffectState = <p>Sending...</p>;
+      sideEffectState = (
+        <div className={styles['form__submission-msg--sending']}>
+          <h2>Sending...</h2>
+          <LoadingSpinner />
+        </div>
+      );
       break;
     case formState.isSucessful:
-      sideEffectState = <p>Thank you for your report!</p>;
+      sideEffectState = (
+        <div className={styles['form__submission-msg--success']}>
+          <h2>Success!</h2>
+          <p>Thank you for your report!</p>
+          <i></i>
+        </div>
+      );
       break;
     case formState.isError:
-      sideEffectState = <p>Something went wrong. Please, try again later.</p>;
+      sideEffectState = (
+        <div className={styles['form__submission-msg--error']}>
+          <h2>Error!</h2>
+          <p>There has been an error. Please, try again.</p>
+          <i className='fa-solid fa-exclamation'></i>
+        </div>
+      );
       break;
     default:
-      sideEffectState = <p>Something went wrong. Please, try again later.</p>;
+      <div className={styles['form__submission-msg--error']}>
+        <h2>Error!</h2>
+        <p>There has been an error. Please, try again.</p>
+        <i className='fa-solid fa-exclamation'></i>
+      </div>;
   }
 
   return (
     <form onSubmit={onSubmitHandler} className={styles['form']} ref={formRef}>
       {displayForm}
+      {!formState.displayForm && (
+        <div className={styles['form__submission-msg']}>
+          {sideEffectState} {!formState.isSending && <button onClick={closeMessageHandler}>OK</button>}
+        </div>
+      )}
     </form>
   );
 }

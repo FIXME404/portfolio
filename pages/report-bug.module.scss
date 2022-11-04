@@ -33,6 +33,7 @@
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-tablet {
+    margin: 13rem auto;
     //Form
     &__form {
       width: 70%;

@@ -23,7 +23,6 @@
     position: relative;
 
     //Input field styling
-
     input,
     textarea {
       width: 100%;
@@ -93,15 +92,103 @@
     }
   }
 
+  //********After submission styles for response message***************
+  &__submission-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    //If the post request was successful
+    &--success {
+      h2,
+      i {
+        color: var(--color-quaternary);
+        margin-bottom: 3rem;
+        font-size: font-size(font-size-xlarge);
+      }
+
+      p {
+        color: var(--color-primary);
+        font-size: font-size(font-size-regular);
+        margin-bottom: 3rem;
+      }
+    }
+
+    //If the post request was unsuccessful
+    &--error {
+      h2,
+      i {
+        color: red;
+        margin: 3rem 0;
+        font-size: font-size(font-size-xlarge);
+      }
+
+      p {
+        color: var(--color-primary);
+        font-size: font-size(font-size-regular);
+        margin-bottom: 3rem;
+      }
+    }
+
+    //sending message loading spinner
+    &--sending {
+      h2 {
+        color: var(--color-quaternary);
+        font-size: font-size(font-size-regular);
+      }
+
+      div {
+        margin: 5rem 0;
+        font-size: font-size(font-size-regular);
+      }
+    }
+
+    //Ok button to reopen the form after submission attempt
+    button {
+      cursor: pointer;
+      width: 50%;
+      margin-top: 2rem;
+      padding: 1rem;
+      color: white;
+      background-color: var(--color-quaternary);
+      font-size: font-size(font-size-regular);
+      border-radius: 0.7rem;
+      border: none;
+    }
+  }
+
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-tablet {
     //Form
     width: 70%;
+
+    &__submission-msg {
+      h2,
+      i {
+        font-size: 3.5rem;
+      }
+
+      p {
+        font-size: 2rem;
+      }
+    }
   } //End of 800px breakpoint
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-mobile-large {
     //Form
     width: 85%;
+
+    &__submission-msg {
+      h2,
+      i {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
   } //End of 600px breakpoint
 }
