@@ -67,7 +67,7 @@ function ReportBugForm() {
     dispatchFormState({ type: 'DISPLAY_FORM', boolean: false });
     dispatchFormState({ type: 'SENDING', boolean: true });
 
-    const response = await fetch('/api/reportBug', {
+    const response = await fetch(process.env.NEXT_PUBLIC_SRC_R, {
       method: 'POST',
       body: JSON.stringify(input),
       headers: {

@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     let client;
 
     try {
-      client = await MongoClient.connect('mongodb+srv://bryangranda:qXvu4bmdcrmkkrmo@cluster0.6gnmkus.mongodb.net/contact?retryWrites=true&w=majority');
+      client = MongoClient.connect('mongodb+srv://bryangranda:qXvu4bmdcrmkkrmo@cluster0.6gnmkus.mongodb.net/contact?retryWrites=true&w=majority');
     } catch (error) {
       res.status(500).json({ message: 'Connecting to the database failed!' });
       return;
@@ -28,7 +28,9 @@ export default async function handler(req, res) {
 
     try {
       const db = client.db();
+      console.log(db, '***************************************');
       await db.collection('contacts').insertOne(newMessage);
+      console.log(db, '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
     } catch (error) {
       res.status(500).json({ message: 'Storing message failed!' });
       return;
