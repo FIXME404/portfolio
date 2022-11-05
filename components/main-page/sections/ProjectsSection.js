@@ -13,26 +13,26 @@ function ProjectsSection() {
   }, []);
 
   return (
-    <section id='projects' className={styles['projects-section']} data-aos='fade-right' data-aos-once='true'>
-      {/* Section content */}
-      <div className={styles['projects-section__content']}>
-        {/* Heading */}
-        <h2 className={styles['projects-section__content--heading']}>Have a look at my creations.</h2>
+    <section id='projects' className={styles['section']} data-aos='fade-right' data-aos-once='true'>
+      {/* Section heading */}
+      <h2 className={styles['section__heading']}>Have a look at my creations.</h2>
 
+      {/* Section content */}
+      <div className={styles['section__projects']}>
         {/* ********* Project 1 *********/}
-        <div className={styles['projects-section__content--project']}>
+        <div className={styles['section__projects--project']}>
           {/* ^^^^^^^ Left Side ^^^^^^^ */}
-          <div className={styles['projects-section__content--project__img']}>
-            {/* Heading */}
-            <h3 className={styles['projects-section__content--project__img--title']}>Java Code Generator</h3>
-            {/* Project image */}
+          {/* Project's name */}
+          <h3 className={styles['section__projects--project__name']}>Java Code Generator</h3>
+          {/* Project image */}
+          <div className={styles['section__projects--project__img']}>
             <Image src='/imgs/java_code_generator.png' layout='fill' alt='Java Code Generator' />
           </div>
 
           {/* ^^^^^^^ Right Side ^^^^^^^*/}
-          <div className={styles['projects-section__content--project__info']}>
+          <div className={styles['section__projects--project__info']}>
             {/* Description */}
-            <p className={styles['projects-section__content--project__info--para']}>
+            <p className={styles['section__projects--project__info--para']}>
               An interactive and easy-to-use website that generates Java code. Quickly generates your Java Class with abstract methods and Javadoc.
             </p>
             {/* button */}
@@ -40,7 +40,8 @@ function ProjectsSection() {
           </div>
         </div>
 
-        <a href='#testimonials' className={styles['projects-section__content--button']}>
+        {/* To testimonials button */}
+        <a href='#testimonials' className={styles['section__projects--button']}>
           Should we connect?
         </a>
       </div>

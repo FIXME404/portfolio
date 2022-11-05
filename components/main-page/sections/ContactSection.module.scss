@@ -115,6 +115,13 @@
   }
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 480px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-tablet {
+    &__heading {
+      font-size: font-size(font-size-medium);
+    }
+  }
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 480px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-mobile {
     margin: 5rem 0;
 

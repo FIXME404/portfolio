@@ -1,27 +1,27 @@
 @use '../../../styles/breakpoints' as mixins;
 @import '../../../styles/font-size';
 
-.projects-section {
+.section {
   grid-column: container-start / container-end;
   text-align: center;
   margin: 10rem 0;
+  color: var(--color-primary);
+
+  //H2 Heading
+  &__heading {
+    font-size: font-size(font-size-large);
+    font-weight: 600;
+    margin-bottom: 8rem;
+  }
 
   //Section content
-  &__content {
+  &__projects {
     padding: 0 1.5rem;
-    color: var(--color-primary);
-
-    //H2 Heading
-    &--heading {
-      font-size: font-size(font-size-large);
-      font-weight: 600;
-      margin-bottom: 8rem;
-    }
 
     //Project item
     &--project {
       display: grid;
-      grid-template-columns: [col-1] 1fr [col-2] 2fr [col-3];
+      grid-template-columns: [col-1] 1fr [col-2] 1.5fr [col-3];
       grid-gap: 2rem;
       padding: 1.5rem;
       margin-bottom: 12rem;
@@ -29,48 +29,43 @@
       background-color: var(--color-secondary);
       box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.4);
 
-      //On hover transform img
-      &:hover {
-        img {
-          transform: scale(1.04);
-          filter: grayscale(0);
-          object-fit: fill;
-          transition: all 0.4s ease-in-out;
-        }
-      }
-
-      //On hover out transform img
-      &:not(:hover) {
-        img {
-          transform: scale(1);
-          filter: grayscale(0.5);
-          transition: all 0.4s ease-in-out;
-        }
+      //Project's name
+      &__name {
+        grid-column: col-1 / col-3;
+        font-size: font-size(font-size-medium);
+        color: var(--color-quaternary);
+        font-weight: 600;
+        margin-bottom: 1rem;
       }
 
       //Project image
       &__img {
         grid-column: col-1 / col-2;
         position: relative;
-
-        //project image
-        img {
-          filter: grayscale(0.5);
-          border-radius: 1rem;
-          margin: 1.5rem 0;
-          width: 100%;
-          object-position: center;
-        }
-
-        //Project title
-        h3 {
-          color: var(--color-primary);
-          font-size: font-size(font-size-regular);
-          font-weight: 400;
-          margin: 1rem 0 1rem;
-        }
+        width: 100%;
+        height: 22vw;
+        filter: grayscale(0.5);
+        border-radius: 5rem;
+        margin: 1.5rem 0 1.5rem 2rem;
+        object-position: center;
       }
 
+      //On hover transform img
+      &:hover &__img {
+        transform: scale(1.08);
+        filter: grayscale(0);
+        object-fit: fill;
+        transition: all 0.4s ease-in-out;
+      }
+
+      //On hover out transform img
+      &:not(:hover) &__img {
+        transform: scale(1);
+        filter: grayscale(0.5);
+        transition: all 0.4s ease-in-out;
+      }
+
+      //Project description
       &__info {
         grid-column: col-2 / col-3;
         display: flex;
@@ -81,29 +76,29 @@
         width: 100%;
         padding: 3rem;
 
-        //Project description
         &--para {
           font-size: font-size(font-size-small);
           font-weight: 400;
           margin-bottom: 5rem;
         }
 
-        //Project link
-        & a {
-          font-size: font-size(font-size-small);
+        //Project's webpage link
+        a {
+          font-size: font-size(font-size-regular);
           font-weight: 400;
           color: white;
+          border: 0.1rem solid transparent;
           background-color: var(--color-tertiary);
-          border: 0.1rem solid var(--color-primary);
-          width: 35%;
-          transition: all 0.2s;
+          width: 50%;
+          transition: all 0.35s ease-in-out;
 
           &:hover {
+            border: 0.1rem solid var(--color-primary);
             background-color: transparent;
-            color: var(--color-quaternary);
+            color: var(--color-primary);
           }
-        }
-      }
+        } // End of project webpage link
+      } // End of project description
     } //end of project item
 
     //To Testimonials Button *-*-*
@@ -146,21 +141,26 @@
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-tablet {
-    &__content {
+    &__heading {
+      font-size: font-size(font-size-medium);
+    }
+
+    &__projects {
       &--project {
-        grid-template-columns: [col-1] 1fr [col-2] 1fr [col-3];
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0 8rem;
 
         &__img {
-          img {
-            width: 90%;
-            object-fit: cover;
-            object-position: center;
-          }
+          width: 50%;
+          margin: 0;
         }
 
         &__info {
-          &--link {
-            width: 90%;
+          a {
+            width: 60%;
           }
         }
       }
@@ -169,13 +169,24 @@
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-mobile-large {
-    &__content {
+    &__projects {
       &--project {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin: 1rem 0 8rem;
+        padding: 0.5rem;
+        &__name {
+          font-size: font-size(font-size-regular);
+        }
+
+        &__img {
+          width: 90%;
+          margin: 0;
+          height: 35vw;
+        }
+
+        &__info {
+          a {
+            width: 110%;
+          }
+        }
       }
     }
   }

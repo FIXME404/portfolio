@@ -3,36 +3,38 @@ import { useEffect, memo } from 'react';
 import aos from 'aos';
 import 'aos/dist/aos.css';
 import Image from 'next/image';
+import Bunny from '../../../public/imgs/bunny.png';
+import Portrait from '../../../public/imgs/portrait.png';
 
 function AboutMeSection() {
   useEffect(() => {
-    aos.init({ duration: 2000 });
+    aos.init({ duration: 1500 });
 
     return () => aos.init({ duration: 0 });
   }, []);
 
   const openingTagText = `<>`;
-
   const closingTagText = `</>`;
+
   return (
-    <section className={styles['about-me-section']} data-aos='slide-up' data-aos-once='true' data-aos-offset='150' id='about-me'>
+    <section className={styles['section']} data-aos='slide-up' data-aos-once='true' data-aos-offset='150' id='about-me'>
+      {/* Heading */}
+      <h2 className={styles['section__heading']}>Hello. I am Bryan.</h2>
       {/* Section content */}
-      <div className={styles['about-me-section__content']}>
-        {/* Heading */}
-        <h2 className={styles['about-me-section__content--heading']}>Hello. I am Bryan.</h2>
+      <div className={styles['section__content']}>
         {/* portrait */}
-        <div className={styles['about-me-section__content--portrait']}>
-          <Image src='/imgs/bunny.png' layout='fill' alt='Bunny' />
+        <div className={styles['section__content--portrait']}>
+          <Image src={Portrait} layout='fill' alt='bunny' />
         </div>
 
         {/* Top paragraph */}
-        <div className={styles['about-me-section__content--para']}>
+        <div className={styles['section__content--para']}>
           <p>I am an enthustiastic Web Developer that creates Websites using</p>
-          <span>{openingTagText}</span> React, SCSS, NodeJS, Java Spring, MongoDB. <span>{closingTagText}</span>
+          <span>{openingTagText}</span> React, SCSS, NodeJS, NextJS, and MongoDB. <span>{closingTagText}</span>
         </div>
 
         {/* Bottom paragraph */}
-        <div className={styles['about-me-section__content--para']}>
+        <div className={styles['section__content--para']}>
           <p>I currently attend Nassau Community College.</p>
           <p>I study</p>
           <span>{openingTagText}</span> Computer Science. <span>{closingTagText}</span>
