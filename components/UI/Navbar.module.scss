@@ -70,7 +70,7 @@
         a:visited {
           padding: 0 3rem;
           font-weight: 300;
-          font-size: font-size(font-size-extra-small);
+          font-size: font-size(font-size-xxsmall);
           color: var(--color-primary);
         }
 
@@ -80,7 +80,7 @@
           position: absolute;
           opacity: 0;
           top: 0;
-          font-size: font-size(font-size-extra-small);
+          font-size: font-size(font-size-xxsmall);
           transition: all 0.3s;
         }
 
@@ -278,8 +278,8 @@
       &--line::after {
         content: '';
         position: absolute;
-        width: 1rem;
-        height: 1rem;
+        width: 0.65rem;
+        height: 0.65rem;
         border-radius: 50%;
         background-color: var(--color-primary);
         top: 0;

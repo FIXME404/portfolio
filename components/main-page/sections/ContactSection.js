@@ -4,6 +4,7 @@ import aos from 'aos';
 import 'aos/dist/aos.css';
 import InputField from '../../../components/inputs/InputField';
 import InputArea from '../../../components/inputs/InputArea';
+import ContactMeForm from '../../forms/ContactMeForm';
 import LoadingSpinner from '../../../components/UI/LoadingSpinner';
 
 function ContactSection() {
@@ -112,11 +113,8 @@ function ContactSection() {
     <section id='contact-me' className={styles['contact-section']} data-aos='slide-left' data-aos-once='true'>
       {/* Heading */}
       <h2 className={styles['contact-section__heading']}>Let's get in touch.</h2>
-
-      {/* Contact Form State*/}
-      <form className={`${styles['contact-section__form']} ${isEmailValid}`} onSubmit={handleOnSubmit} ref={formRef}>
-        {formState}
-      </form>
+      {/* Contact Form*/}
+      <ContactMeForm />
       {/* Closing Tag */}
       <h2 className={styles['contact-section__closing-tag']}>{`</ Thanks for stopping by. >`}</h2>
     </section>
@@ -124,3 +122,7 @@ function ContactSection() {
 }
 
 export default memo(ContactSection);
+
+// <form className={`${styles['contact-section__form']} ${isEmailValid}`} onSubmit={handleOnSubmit} ref={formRef}>
+//         {formState}
+//       </form>

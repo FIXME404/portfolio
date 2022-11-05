@@ -26,7 +26,7 @@ function ProjectsSection() {
             {/* Heading */}
             <h3 className={styles['projects-section__content--project__img--title']}>Java Code Generator</h3>
             {/* Project image */}
-            <Image src='/imgs/java_code_generator.png' width='111' height='111' alt='Java Code Generator' />
+            <Image src='/imgs/java_code_generator.png' layout='fill' alt='Java Code Generator' />
           </div>
 
           {/* ^^^^^^^ Right Side ^^^^^^^*/}
@@ -41,7 +41,7 @@ function ProjectsSection() {
         </div>
 
         <a href='#testimonials' className={styles['projects-section__content--button']}>
-          See what others say
+          Should we connect?
         </a>
       </div>
     </section>

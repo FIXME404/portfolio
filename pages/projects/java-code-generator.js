@@ -24,7 +24,9 @@ function JavaGeneratorPage() {
         <h1 className={styles['page-section__content--heading']}>{`< Java Code Generator >`}</h1>
 
         {/* Project's image */}
-        <Image className={styles['page-section__content--img']} src={javaCodeGenerator} alt='Java Code Generator Website' />
+        <div className={styles['page-section__content--img']}>
+          <Image src={javaCodeGenerator} layout='fill' alt='Java Code Generator Website' />
+        </div>
 
         {/* Brief description of the project. */}
         <h2 className={styles['page-section__content--subheading']}>Java Code Generator is a web application that generates Java code with Javadoc and abstract methods of your choosing.</h2>

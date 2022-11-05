@@ -12,8 +12,6 @@ function MainPage() {
       <ShowcaseSection />
       <AboutMeSection />
       <ProjectsSection />
-      <TestimonialsSection />
-      <SkillsSection />
       <ContactSection />
     </div>
   );

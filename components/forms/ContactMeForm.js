@@ -1,10 +1,10 @@
-import styles from './ReportBugForm.module.scss';
-import useForm from '../hooks/use-form';
+import styles from './ContactMeForm.module.scss';
 import { useRef, useReducer } from 'react';
+import useForm from '../hooks/use-form';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 //Validity checker function that checks if the input is empty
-const isEmpty = name => name.trim() !== '';
+const isValidEmail = email => email.includes('@') && email.trim() !== '';
 
 //reducer initial state
 const initialState = {
@@ -30,7 +30,7 @@ const formReducer = (state, action) => {
   }
 };
 
-function ReportBugForm() {
+function ContactMeForm() {
   //Form ref
   const formRef = useRef();
 
@@ -38,27 +38,28 @@ function ReportBugForm() {
   const [formState, dispatchFormState] = useReducer(formReducer, initialState);
 
   //Message custom hook
-  const { input: messageInput, isInputInvalid: isMessageInvalid, handleInputChange: messageChangeHandler, handleInputBlur: messageBlurHandler, reset: messageReset } = useForm(isEmpty);
+  const { input: emailInput, isInputInvalid: isEmailInvalid, handleInputChange: emailChangeHandler, handleInputBlur: emailBlurHandler, reset: emailReset } = useForm(isValidEmail);
 
   //close message button
   const closeMessageHandler = () => {
     dispatchFormState({ type: 'DISPLAY_FORM', boolean: true });
     dispatchFormState({ type: 'SUCCESS', boolean: false });
     dispatchFormState({ type: 'ERROR', boolean: false });
-    messageReset();
   };
 
-  //Submit handler
-  const onSubmitHandler = e => {
-    e.preventDefault();
+  // Form submission
+  const handleOnSubmit = event => {
+    event.preventDefault();
 
-    if (!isEmpty(messageInput) || isMessageInvalid) {
-      messageBlurHandler();
+    //Form data and API endpoint
+    if (!isValidEmail(emailInput) || isEmailInvalid) {
+      emailBlurHandler();
       return;
     } else {
-      const { name, url, email, message } = formRef.current.elements;
-      postData({ name: name.value, url: url.value, email: email.value, message: message.value });
-      messageReset();
+      //send form data to API
+      const { name, email, message } = formRef.current.elements;
+      postData({ name: name.value, email: email.value, message: message.value });
+      emailReset();
     }
   };
 
@@ -67,20 +68,20 @@ function ReportBugForm() {
     dispatchFormState({ type: 'DISPLAY_FORM', boolean: false });
     dispatchFormState({ type: 'SENDING', boolean: true });
 
-    const response = await fetch('/api/reportBug', {
+    const response = await fetch('/api/contact', {
       method: 'POST',
       body: JSON.stringify(input),
       headers: {
         'Content-Type': 'application/json'
       }
     });
-
     dispatchFormState({ type: 'SENDING', boolean: false });
 
     //Checks for response status
     const status = response.status;
     switch (status) {
-      case 200 || 201:
+      case 200:
+      case 201:
         dispatchFormState({ type: 'SUCCESS', boolean: true });
         break;
       case status > 400:
@@ -92,7 +93,7 @@ function ReportBugForm() {
   };
 
   // ternary operator to check if the form is valid
-  const messageStateStyle = isMessageInvalid ? styles['form__input--invalid'] : styles['form__input'];
+  const messageStateStyle = isEmailInvalid ? styles['form__input--invalid'] : styles['form__input'];
 
   //Display form
   const displayForm = formState.displayForm ? (
@@ -111,16 +112,16 @@ function ReportBugForm() {
       </div>
 
       {/* email */}
-      <div className={styles['form__input']}>
-        <input type='email' id='email' placeholder='E-Mail Address (Optional)' />
-        <label htmlFor='email'>E-Mail Address (Optional)</label>
+      <div className={messageStateStyle}>
+        <input type='email' id='email' placeholder='E-Mail Address *' value={emailInput} onChange={emailChangeHandler} onBlur={emailBlurHandler} />
+        <label htmlFor='email'>E-Mail *</label>
+        {isEmailInvalid && <p className={styles['form__input--error']}>Please, enter a valid e-mail address.</p>}
       </div>
 
       {/* textarea */}
-      <div className={messageStateStyle}>
+      <div className={styles['form__input']}>
         <label htmlFor='message'>Please, Describe the bug.</label>
-        <textarea type='text' id='message' value={messageInput} onChange={messageChangeHandler} onBlur={messageBlurHandler} rows='5' />
-        {isMessageInvalid && <p className={styles['form__input--error']}>Please, enter a report.</p>}
+        <textarea type='text' id='message' rows='5' />
       </div>
 
       {/* Submit button */}
@@ -146,7 +147,7 @@ function ReportBugForm() {
       sideEffectState = (
         <div className={styles['form__submission-msg--success']}>
           <h2>Success!</h2>
-          <p>Thank you for your report!</p>
+          <p>Thanks for contacting me :)</p>
           <i className='fa-solid fa-check'></i>
         </div>
       );
@@ -169,7 +170,7 @@ function ReportBugForm() {
   }
 
   return (
-    <form onSubmit={onSubmitHandler} className={styles['form']} ref={formRef}>
+    <form onSubmit={handleOnSubmit} className={styles['form']} ref={formRef}>
       {displayForm}
       {!formState.displayForm && (
         <div className={styles['form__submission-msg']}>
@@ -180,4 +181,4 @@ function ReportBugForm() {
   );
 }
 
-export default ReportBugForm;
+export default ContactMeForm;
