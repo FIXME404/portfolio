@@ -1,5 +1,5 @@
 import styles from './ProjectsSection.module.scss';
-import { useEffect, memo } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import aos from 'aos';
@@ -49,4 +49,4 @@ function ProjectsSection() {
   );
 }
 
-export default memo(ProjectsSection);
+export default ProjectsSection;

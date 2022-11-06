@@ -1,9 +1,8 @@
 import styles from './AboutMeSection.module.scss';
-import { useEffect, memo } from 'react';
+import { useEffect } from 'react';
 import aos from 'aos';
 import 'aos/dist/aos.css';
 import Image from 'next/image';
-import Bunny from '../../../public/imgs/bunny.png';
 import Portrait from '../../../public/imgs/portrait.png';
 
 function AboutMeSection() {
@@ -49,4 +48,4 @@ function AboutMeSection() {
   );
 }
 
-export default memo(AboutMeSection);
+export default AboutMeSection;

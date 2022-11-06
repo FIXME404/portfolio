@@ -1,5 +1,5 @@
 import styles from './TestimonialsSection.module.scss';
-import { useEffect, memo } from 'react';
+import { useEffect } from 'react';
 import aos from 'aos';
 import 'aos/dist/aos.css';
 
@@ -39,4 +39,4 @@ function TestimonialsSection() {
   );
 }
 
-export default memo(TestimonialsSection);
+export default TestimonialsSection;

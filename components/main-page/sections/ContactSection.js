@@ -2,10 +2,7 @@ import styles from './ContactSection.module.scss';
 import { useEffect, memo, useRef, useState, useTimeout } from 'react';
 import aos from 'aos';
 import 'aos/dist/aos.css';
-import InputField from '../../../components/inputs/InputField';
-import InputArea from '../../../components/inputs/InputArea';
 import ContactMeForm from '../../forms/ContactMeForm';
-import LoadingSpinner from '../../../components/UI/LoadingSpinner';
 
 function ContactSection() {
   // Animation on scroll

@@ -1,6 +1,5 @@
 import styles from './ShowcaseSection.module.scss';
 import Navbar from '../../../components/UI/Navbar';
-import { memo } from 'react';
 
 function ShowcaseSection() {
   const welcomeText = '< Welcome >';
@@ -31,4 +30,4 @@ function ShowcaseSection() {
   );
 }
 
-export default memo(ShowcaseSection);
+export default ShowcaseSection;

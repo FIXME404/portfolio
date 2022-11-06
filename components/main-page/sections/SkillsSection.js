@@ -1,5 +1,5 @@
 import styles from './SkillsSection.module.scss';
-import { useEffect, memo } from 'react';
+import { useEffect } from 'react';
 import aos from 'aos';
 import 'aos/dist/aos.css';
 
@@ -29,4 +29,4 @@ function SkillsSection() {
   );
 }
 
-export default memo(SkillsSection);
+export default SkillsSection;
