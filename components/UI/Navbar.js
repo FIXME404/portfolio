@@ -3,15 +3,15 @@ import styles from './Navbar.module.scss';
 import Link from 'next/link';
 
 function Navbar(props) {
-  let htmlTheme;
-
   //useMemo to memorize the preferred theme of the user
-  if (typeof window !== 'undefined')
-    useMemo(
-      () => (window.matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.setAttribute('data-theme', 'dark') : document.documentElement.setAttribute('data-theme', 'light')),
-      []
-    );
+  useMemo(() => {
+    if (typeof window !== 'undefined') {
+      window.matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.setAttribute('data-theme', 'dark') : document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }, []);
 
+  //useEffect to get the current theme
+  let htmlTheme;
   useEffect(() => {
     htmlTheme = document.documentElement.getAttribute('data-theme');
   }, []);
