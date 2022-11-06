@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Bryan's Portfolio</title>
-        <meta name='description' content={`Bryan's awesome portfolio`} />
+        <meta name='description' content="Bryan's awesome portfolio" />
         <link rel='icon' href='/icon.svg' />
       </Head>
       <Script src='https://kit.fontawesome.com/1161eb7072.js' crossOrigin='anonymous' strategy='lazyOnload'></Script>

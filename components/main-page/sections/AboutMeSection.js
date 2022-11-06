@@ -41,7 +41,7 @@ function AboutMeSection() {
 
         {/* Button */}
         <a href='#projects'>
-          <span>Let's look at my projects</span>
+          <span>Let&apos;s look at my projects</span>
         </a>
       </div>
     </section>

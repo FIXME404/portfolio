@@ -15,7 +15,7 @@ function ContactSection() {
   return (
     <section id='contact-me' className={styles['contact-section']} data-aos='slide-left' data-aos-once='true'>
       {/* Heading */}
-      <h2 className={styles['contact-section__heading']}>Let's get in touch.</h2>
+      <h2 className={styles['contact-section__heading']}>Let&apos;s get in touch.</h2>
       {/* Contact Form*/}
       <ContactMeForm />
       {/* Closing Tag */}
