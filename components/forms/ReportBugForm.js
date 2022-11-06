@@ -80,7 +80,8 @@ function ReportBugForm() {
     //Checks for response status
     const status = response.status;
     switch (status) {
-      case 200 || 201:
+      case 200:
+      case 201:
         dispatchFormState({ type: 'SUCCESS', boolean: true });
         break;
       case status > 400:
