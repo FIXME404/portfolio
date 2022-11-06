@@ -4,18 +4,20 @@ import Link from 'next/link';
 
 function Navbar(props) {
   let htmlTheme;
+
+  //useMemo to memorize the preferred theme of the user
+  if (typeof window !== 'undefined')
+    useMemo(
+      () => (window.matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.setAttribute('data-theme', 'dark') : document.documentElement.setAttribute('data-theme', 'light')),
+      []
+    );
+
   useEffect(() => {
     htmlTheme = document.documentElement.getAttribute('data-theme');
   }, []);
 
+  //Stores theme in useState
   const [themeState, changeThemeState] = useState(htmlTheme === 'dark' ? true : false);
-
-  if (typeof window !== 'undefined') {
-    //useMemo to memorize the preferred theme of the user
-    useMemo(() => {
-      window.matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.setAttribute('data-theme', 'dark') : document.documentElement.setAttribute('data-theme', 'light');
-    }, []);
-  }
 
   const [hamburgerState, changeHamburgerState] = useState('');
 
