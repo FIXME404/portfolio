@@ -37,4 +37,4 @@ yarn-error.log*
 next-env.d.ts
 
 # api files
-/pages/api
+pages/api/*.js
