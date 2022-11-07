@@ -1,0 +1,9 @@
+name: github Actions test
+on: [push]
+env:
+  ENV_VARIABLE: test
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "$ENV_VARIABLE"
