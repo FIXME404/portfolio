@@ -68,7 +68,7 @@ function ContactMeForm() {
     dispatchFormState({ type: 'DISPLAY_FORM', boolean: false });
     dispatchFormState({ type: 'SENDING', boolean: true });
 
-    const response = await fetch(process.env.NEXT_PUBLIC_SRC_C, {
+    const response = await fetch('/api/contact', {
       method: 'POST',
       body: JSON.stringify(input),
       headers: {
