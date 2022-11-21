@@ -40,7 +40,7 @@ function ContactMeForm() {
   //Message custom hook
   const { input: emailInput, isInputInvalid: isEmailInvalid, handleInputChange: emailChangeHandler, handleInputBlur: emailBlurHandler, reset: emailReset } = useForm(isValidEmail);
 
-  //close message button
+  //Close message button handler
   const closeMessageHandler = () => {
     dispatchFormState({ type: 'DISPLAY_FORM', boolean: true });
     dispatchFormState({ type: 'SUCCESS', boolean: false });
@@ -51,7 +51,6 @@ function ContactMeForm() {
   const handleOnSubmit = event => {
     event.preventDefault();
 
-    //Form data and API endpoint
     if (!isValidEmail(emailInput) || isEmailInvalid) {
       emailBlurHandler();
       return;
@@ -95,7 +94,7 @@ function ContactMeForm() {
   // ternary operator to check if the form is valid
   const messageStateStyle = isEmailInvalid ? styles['form__input--invalid'] : styles['form__input'];
 
-  //Display form
+  //Variable to display the form or not
   const displayForm = formState.displayForm ? (
     //FORM HTML
     <>
@@ -132,7 +131,7 @@ function ContactMeForm() {
     sideEffectState
   );
 
-  //Switch state for side effects form state
+  //Switch statement for side effects form state
   let sideEffectState = null;
   switch (true) {
     case formState.isSending:

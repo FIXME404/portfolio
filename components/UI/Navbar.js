@@ -3,42 +3,35 @@ import styles from './Navbar.module.scss';
 import Link from 'next/link';
 
 function Navbar(props) {
-  //useMemo to memorize the preferred theme of the user
-  useMemo(() => {
-    if (typeof window !== 'undefined') {
-      window.matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.setAttribute('data-theme', 'dark') : document.documentElement.setAttribute('data-theme', 'light');
-    }
-  }, []);
-
-  //useEffect to get the current theme
+  //Variable to hold the theme
   let htmlTheme;
-  useEffect(() => {
-    htmlTheme = document.documentElement.getAttribute('data-theme');
-  }, []);
 
-  //Stores theme in useState
-  const [themeState, changeThemeState] = useState(htmlTheme === 'dark' ? true : false);
+  //Waits for window to load before setting theme
+  if (typeof window !== 'undefined') {
+    let preferredTheme = document.documentElement.getAttribute('data-theme');
+    //On first load, gets the user's preferred theme and sets the theme to it
+    if (preferredTheme === null || preferredTheme === undefined)
+      window.matchMedia('(prefers-color-scheme: dark)').matches ? document.documentElement.setAttribute('data-theme', 'dark') : document.documentElement.setAttribute('data-theme', 'light');
 
-  const [hamburgerState, changeHamburgerState] = useState('');
+    htmlTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? false : true;
+  }
+
+  //Stores HTML theme in useState
+  const [themeState, changeThemeState] = useState(htmlTheme);
 
   //Theme toggler function
-  const handleChangingTheme = useCallback(() => {
+  const handleChangingTheme = () => {
     themeState ? document.documentElement.setAttribute('data-theme', 'dark') : document.documentElement.setAttribute('data-theme', 'light');
-    return changeThemeState(state => !state);
-  }, [themeState]);
-
-  //Hamburger toggler function
-  const handleHamburgerOpen = () => {
-    changeHamburgerState(() => {
-      if (hamburgerState === '') {
-        return 'open';
-      } else {
-        return '';
-      }
-    });
+    changeThemeState(themeState => !themeState);
   };
 
-  //Navbar links array
+  //Hamburger menu state
+  const [hamburgerState, changeHamburgerState] = useState('');
+
+  //Hamburger toggler function
+  const handleHamburgerOpen = () => changeHamburgerState(() => (hamburgerState === '' ? 'open' : ''));
+
+  //Navbar links array mapping
   const linksArray = props.links.map((link, index) => {
     if (link.path !== undefined && link.path !== null) {
       return (
@@ -59,12 +52,12 @@ function Navbar(props) {
     // hamburgerState
     <header className={`${styles[hamburgerState]} ${styles['header']}`}>
       {/* Hamburger Lines */}
-      <div className={styles['header__menu']} onClick={() => handleHamburgerOpen()}>
+      <div className={styles['header__menu']} onClick={handleHamburgerOpen}>
         <div className={`${styles[hamburgerState]} ${styles['header__menu--line']}`} />
       </div>
 
       {/* Overlay */}
-      <div className={`${styles[hamburgerState]} ${styles['header__overlay']}`} onClick={() => handleHamburgerOpen()} />
+      <div className={`${styles[hamburgerState]} ${styles['header__overlay']}`} onClick={handleHamburgerOpen} />
 
       {/* Navbar */}
       <nav className={`${styles[hamburgerState]} ${styles['header__nav']}`}>
@@ -74,9 +67,10 @@ function Navbar(props) {
         {/* Links */}
         <ul className={styles['header__nav--links']}>
           {linksArray}
+
           {/* Dark Mode Toggler */}
           <div className={styles['header__nav--links__toggle-container']}>
-            <input type='checkbox' id='toggle' name='theme' value={themeState} checked={themeState} onChange={() => handleChangingTheme()} />
+            <input type='checkbox' id='toggle' name='theme' onClick={handleChangingTheme} checked={themeState} readOnly={true} />
           </div>
         </ul>
       </nav>
