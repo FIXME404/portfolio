@@ -1,6 +1,7 @@
 import '../styles/globals.scss';
 import Head from 'next/head';
 import Script from 'next/script';
+import SocialsSideBar from '../components/UI/SocialsSideBar';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Script src='https://kit.fontawesome.com/1161eb7072.js' crossOrigin='anonymous' strategy='lazyOnload'></Script>
       <Component {...pageProps} />
+      <SocialsSideBar />
     </>
   );
 }

@@ -5,15 +5,8 @@ import 'aos/dist/aos.css';
 import ContactMeForm from '../../forms/ContactMeForm';
 
 function ContactSection() {
-  // Animation on scroll
-  useEffect(() => {
-    aos.init({ duration: 2000 });
-
-    return () => aos.init({ duration: 0 });
-  }, []);
-
   return (
-    <section id='contact-me' className={styles['contact-section']} data-aos='slide-left' data-aos-once='true'>
+    <section id='contact-me' className={styles['contact-section']} data-aos='fade' data-aos-once='true' data-aos-duration='20000' data-aos-delay='1000000'>
       {/* Heading */}
       <h2 className={styles['contact-section__heading']}>Let&apos;s get in touch.</h2>
       {/* Contact Form*/}

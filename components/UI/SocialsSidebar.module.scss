@@ -1,5 +1,5 @@
-@use '../../_breakpoints.scss' as mixins;
-@import '../../variables';
+@use '../../styles/_breakpoints.scss' as mixins;
+@import '../../styles/_font-size';
 
 .socials-sidebar {
   position: fixed;

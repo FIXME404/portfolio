@@ -1,29 +1,22 @@
 import styles from './AboutMeSection.module.scss';
 import { useEffect } from 'react';
-import aos from 'aos';
 import 'aos/dist/aos.css';
 import Image from 'next/image';
 import Portrait from '../../../public/imgs/portrait.png';
 
 function AboutMeSection() {
-  useEffect(() => {
-    aos.init({ duration: 1500 });
-
-    return () => aos.init({ duration: 0 });
-  }, []);
-
   const openingTagText = `<>`;
   const closingTagText = `</>`;
 
   return (
-    <section className={styles['section']} data-aos='slide-up' data-aos-once='true' data-aos-offset='150' id='about-me'>
+    <section className={styles['section']} data-aos='fade-up' data-aos-once='true' data-aos-offset='500' id='about-me' data-aos-duration='2000' data-aos-easing='ease-in-out-cubic'>
       {/* Heading */}
       <h2 className={styles['section__heading']}>Hello. I am Bryan.</h2>
       {/* Section content */}
       <div className={styles['section__content']}>
         {/* portrait */}
-        <div className={styles['section__content--portrait']}>
-          <Image src={Portrait} layout='fill' alt='bunny' />
+        <div className={styles['section__content--portrait']} data-aos='flip-right' data-aos-once='true' data-aos-delay='1000000' data-aos-offset='600'>
+          <Image src={Portrait} layout='fill' alt='portrait' data-aos='flip-left' data-aos-once='true' data-aos-delay='1000000' data-aos-offset='600' />
         </div>
 
         {/* Top paragraph */}
