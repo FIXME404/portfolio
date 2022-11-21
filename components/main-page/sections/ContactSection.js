@@ -1,5 +1,5 @@
 import styles from './ContactSection.module.scss';
-import { useEffect, memo, useRef, useState, useTimeout } from 'react';
+import { memo } from 'react';
 import aos from 'aos';
 import 'aos/dist/aos.css';
 import ContactMeForm from '../../forms/ContactMeForm';
