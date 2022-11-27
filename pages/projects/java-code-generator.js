@@ -35,7 +35,7 @@ function JavaGeneratorPage() {
 
         {/* Project's hosted weblink */}
         <div className={styles['page-section__content--link-btn']}>
-          <a className={styles['page-section__content--link-btn']} href='https://github.com/FIXME404/Java-Generator-v2' target='_blank'>
+          <a className={styles['page-section__content--link-btn']} href='https://github.com/FIXME404/Java-Generator-v2' target='_blank' rel='noreferrer'>
             https://github.com/FIXME404/Java-Generator-v2
           </a>
         </div>
@@ -51,11 +51,11 @@ function JavaGeneratorPage() {
         {/* Project's languages */}
         <p>
           Developed using{' '}
-          <a className={styles['page-section__content--web-link']} href='https://reactjs.org/' target='_blank'>
+          <a className={styles['page-section__content--web-link']} href='https://reactjs.org/' target='_blank' rel='noreferrer'>
             React
           </a>{' '}
           &{' '}
-          <a className={styles['page-section__content--web-link']} href='https://sass-lang.com/' target='_blank'>
+          <a className={styles['page-section__content--web-link']} href='https://sass-lang.com/' target='_blank' rel='noreferrer'>
             SCSS
           </a>
           .
@@ -71,7 +71,7 @@ function JavaGeneratorPage() {
         {/* Project creator */}
         <p>
           Developer:{' '}
-          <a className={styles['page-section__content--web-link']} href='https://github.com/FIXME404' target='_blank'>
+          <a className={styles['page-section__content--web-link']} href='https://github.com/FIXME404' target='_blank' rel='noreferrer'>
             Bryan Granda
           </a>
           .
@@ -81,7 +81,7 @@ function JavaGeneratorPage() {
         <div className={styles['page-section__content--link-btn']}>
           <p>
             The codebase is located at
-            <a href='https://github.com/FIXME404/Java-Generator-v2' target='_blank'>
+            <a href='https://github.com/FIXME404/Java-Generator-v2' target='_blank' rel='noreferrer'>
               https://github.com/FIXME404/Java-Generator-v2
             </a>
           </p>
