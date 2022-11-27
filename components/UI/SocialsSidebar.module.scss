@@ -23,7 +23,17 @@
 
       //Socials link
       i {
+        opacity: 0.8;
         font-size: font-size(font-size-medium);
+        transition: all 0.2s ease-in-out;
+      }
+
+      //Socials link hover
+      &:hover {
+        i {
+          transform: translateY(-0.5rem);
+          color: var(--color-quaternary);
+        }
       }
     }
   }

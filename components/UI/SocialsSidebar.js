@@ -6,17 +6,13 @@ function SocialsSidebar() {
       {/* Socials */}
       <div className={styles['socials-sidebar__socials']}>
         {/* Social 1 */}
-        <a href='https://github.com/FIXME404' className={styles['socials-sidebar__socials--social']} target='_blank' rel='noreferrer'>
+        <a href='https://github.com/bryan-granda' className={styles['socials-sidebar__socials--social']} target='_blank' rel='noreferrer'>
           <i className='fab fa-github'></i>
         </a>
         {/* Social 2 */}
         <a href='https://www.linkedin.com/in/bryan-granda-8585b5255/' className={styles['socials-sidebar__socials--social']} target='_blank' rel='noreferrer'>
           <i className='fab fa-linkedin'></i>
         </a>
-        {/* Social 3 */}
-        {/* <a href='https://github.com/FIXME404' className={styles['socials-sidebar__socials--social']}>
-          <i className='fab fa-twitter'></i>
-        </a> */}
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
-@use '../../_breakpoints.scss' as mixins;
-@import '../../variables';
+@use '../../styles/_breakpoints.scss' as mixins;
+@import '../../styles/_font-size';
 
 .scroll {
   // Section
   position: fixed;
   bottom: 2rem;
   left: 2rem;
+  z-index: 2;
 
   // ********* Scroll to top button *********
   &__button {
@@ -16,19 +17,27 @@
     border: none;
     font-size: font-size(font-size-large);
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     animation: fadeIn 0.5s ease-in-out;
 
+    // Button hover
     &:hover {
       transform: translateY(-0.5rem);
-    }
+      color: var(--color-quaternary);
 
-    i {
-      background-color: transparent;
+      i {
+        color: var(--color-quaternary);
+      }
     }
+  }
+
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @include mixins.media-mobile-large {
+    display: none;
   }
 }
 
+// Fade in animation
 @keyframes fadeIn {
   0% {
     opacity: 0;

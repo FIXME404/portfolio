@@ -35,8 +35,8 @@ function JavaGeneratorPage() {
 
         {/* Project's hosted weblink */}
         <div className={styles['page-section__content--link-btn']}>
-          <a className={styles['page-section__content--link-btn']} href='https://github.com/FIXME404/Java-Generator-v2' target='_blank' rel='noreferrer'>
-            https://github.com/FIXME404/Java-Generator-v2
+          <a className={styles['page-section__content--link-btn']} href='https://bryan-granda.github.io/java-code-generator/' target='_blank' rel='noreferrer'>
+            https://bryan-granda.github.io/Java-code-generator/
           </a>
         </div>
 
@@ -71,7 +71,7 @@ function JavaGeneratorPage() {
         {/* Project creator */}
         <p>
           Developer:{' '}
-          <a className={styles['page-section__content--web-link']} href='https://github.com/FIXME404' target='_blank' rel='noreferrer'>
+          <a className={styles['page-section__content--web-link']} href='https://github.com/bryan-granda' target='_blank' rel='noreferrer'>
             Bryan Granda
           </a>
           .
@@ -81,8 +81,8 @@ function JavaGeneratorPage() {
         <div className={styles['page-section__content--link-btn']}>
           <p>
             The codebase is located at
-            <a href='https://github.com/FIXME404/Java-Generator-v2' target='_blank' rel='noreferrer'>
-              https://github.com/FIXME404/Java-Generator-v2
+            <a href='https://github.com/bryan-granda/Java-code-generator' target='_blank' rel='noreferrer'>
+              https://github.com/bryan-granda/Java-code-generator
             </a>
           </p>
         </div>
