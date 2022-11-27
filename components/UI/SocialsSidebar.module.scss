@@ -2,14 +2,15 @@
 @import '../../styles/_font-size';
 
 .socials-sidebar {
+  // Section
   position: fixed;
-  bottom: 3rem;
-  right: 3rem;
+  bottom: 6rem;
+  right: 4.5rem;
   opacity: 0;
   z-index: 2;
   animation: fadeIn 2.5s ease-in-out forwards;
 
-  //Sidebar content
+  // ******** Sidebar content ********
   &__socials {
     display: flex;
     flex-direction: column;
@@ -18,11 +19,11 @@
 
     //Socials item
     &--social {
-      margin: 1rem 0;
+      margin: 1.5rem 0;
 
       //Socials link
       i {
-        font-size: font-size(font-size-regular);
+        font-size: font-size(font-size-medium);
       }
     }
   }
@@ -33,6 +34,7 @@
   }
 }
 
+// Fade in animation
 @keyframes fadeIn {
   0% {
     opacity: 0;

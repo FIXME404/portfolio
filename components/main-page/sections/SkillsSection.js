@@ -1,15 +1,7 @@
 import styles from './SkillsSection.module.scss';
-import { useEffect } from 'react';
-import aos from 'aos';
 import 'aos/dist/aos.css';
 
 function SkillsSection() {
-  useEffect(() => {
-    aos.init({ duration: 2000 });
-
-    return () => aos.init({ duration: 0 });
-  }, []);
-
   return (
     <section id='skills' className={styles['skills-section']} data-aos='slide-up' data-aos-once='true'>
       {/* Heading */}

@@ -2,25 +2,26 @@
 @import '../../../styles/font-size';
 
 .section {
+  //Section
   grid-column: container-start / container-end;
   text-align: center;
   margin: 15rem 0;
   color: var(--color-primary);
 
-  //H2 Heading
+  // ******** h2 Heading ********
   &__heading {
     font-size: font-size(font-size-large);
     font-weight: 600;
   }
 
-  //Section content
+  // ############ Section content ############
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 1.5rem;
 
-    //Portrait
+    // ********* Portrait *********
     &--portrait {
       position: relative;
       width: 15vw;
@@ -29,22 +30,21 @@
       background-color: var(--color-quaternary);
       margin: 3rem 0;
       overflow: hidden;
-      // animation: fadeIn 10.5s ease-in-out forwards;
     }
 
-    //Paragraphs
+    // ********* Paragraphs *********
     &--para {
       font-size: font-size(font-size-small);
       margin-bottom: 7rem;
 
-      //<> tags
+      // <> tags
       span {
         color: var(--color-quaternary);
         font-weight: 600;
       }
     }
 
-    //To Projects Button *-*-*
+    // ********* To Projects Button *********
     a:link,
     a:visited {
       position: relative;
@@ -79,8 +79,8 @@
           transform: scaleX(1);
         }
       }
-    } //End of Projects Button
-  } //End of section content
+    }
+  }
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-tablet {
@@ -98,7 +98,7 @@
     }
   } //End of 800px breakpoint
 
-  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-mobile-large {
     &__content {
       &--portrait {
@@ -106,14 +106,5 @@
         height: 35vw;
       }
     }
-  }
-} //End of about me section
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  } //End of 600px breakpoint
 }

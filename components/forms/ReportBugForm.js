@@ -53,6 +53,7 @@ function ReportBugForm() {
     e.preventDefault();
 
     if (!isEmpty(messageInput) || isMessageInvalid) {
+      //If the message is invalid, do not send the form and highlights the message input with red border
       messageBlurHandler();
       return;
     } else {
@@ -67,6 +68,7 @@ function ReportBugForm() {
     dispatchFormState({ type: 'DISPLAY_FORM', boolean: false });
     dispatchFormState({ type: 'SENDING', boolean: true });
 
+    // request sent to report-bug api file
     const response = await fetch('api/report-bug', {
       method: 'POST',
       body: JSON.stringify(input),
@@ -96,7 +98,7 @@ function ReportBugForm() {
   const messageStateStyle = isMessageInvalid ? styles['form__input--invalid'] : styles['form__input'];
 
   //Display form
-  const displayForm = formState.displayForm ? (
+  const displayForm = formState.displayForm && (
     //FORM HTML
     <>
       {/* name */}
@@ -127,14 +129,12 @@ function ReportBugForm() {
       {/* Submit button */}
       <button className={styles['form__submit-btn']}>Submit</button>
     </>
-  ) : (
-    //Display message based on current form side effect state
-    sideEffectState
   );
 
   //Switch state for side effects form state
   let sideEffectState = null;
   switch (true) {
+    // If message is sending
     case formState.isSending:
       sideEffectState = (
         <div className={styles['form__submission-msg--sending']}>
@@ -143,6 +143,7 @@ function ReportBugForm() {
         </div>
       );
       break;
+    // If message is successful
     case formState.isSuccessful:
       sideEffectState = (
         <div className={styles['form__submission-msg--success']}>
@@ -152,6 +153,7 @@ function ReportBugForm() {
         </div>
       );
       break;
+    // If message is unsuccessful
     case formState.isError:
       sideEffectState = (
         <div className={styles['form__submission-msg--error']}>
@@ -161,20 +163,30 @@ function ReportBugForm() {
         </div>
       );
       break;
+    // If none of the above
     default:
-      <div className={styles['form__submission-msg--error']}>
-        <h2>Error!</h2>
-        <p>There has been an error. Please, try again.</p>
-        <i className='fa-solid fa-exclamation'></i>
-      </div>;
+      sideEffectState = (
+        <div className={styles['form__submission-msg--error']}>
+          <h2>Error!</h2>
+          <p>There has been an error. Please, try again.</p>
+          <i className='fa-solid fa-exclamation'></i>
+        </div>
+      );
   }
 
   return (
     <form onSubmit={onSubmitHandler} className={styles['form']} ref={formRef}>
+      {/* Display form or not */}
       {displayForm}
+
+      {/* If form is not being displayed, display the side effect message with an ok button if message is not being sent */}
       {!formState.displayForm && (
         <div className={styles['form__submission-msg']}>
-          {sideEffectState} {!formState.isSending && <button onClick={closeMessageHandler}>OK</button>}
+          {/* side effect state elements */}
+          {sideEffectState}
+
+          {/* If message is not being sent, display the ok button */}
+          {!formState.isSending && <button onClick={closeMessageHandler}>OK</button>}
         </div>
       )}
     </form>

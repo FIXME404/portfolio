@@ -1,17 +1,9 @@
 import styles from './ProjectsSection.module.scss';
-import { useEffect } from 'react';
+import 'aos/dist/aos.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import aos from 'aos';
-import 'aos/dist/aos.css';
 
 function ProjectsSection() {
-  // useEffect(() => {
-  //   aos.init({ duration: 2000 });
-
-  //   return () => aos.init({ duration: 0 });
-  // }, []);
-
   return (
     <section id='projects' className={styles['section']}>
       {/* Section heading */}

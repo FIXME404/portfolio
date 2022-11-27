@@ -6,6 +6,7 @@
   width: 50%;
   margin: 5rem auto;
 
+  // ******** Submit button *********
   &__submit-btn {
     position: relative;
     cursor: pointer;
@@ -16,8 +17,16 @@
     font-size: font-size(font-size-regular);
     border-radius: 0.7rem;
     border: none;
+
+    // Submit button animation
+    &:hover {
+      background-color: transparent;
+      border: 1px solid var(--color-primary);
+      transition: background-color 0.15s ease-in-out;
+    }
   }
 
+  // ******** Input Fields *********
   &__input,
   &__input--invalid {
     position: relative;
@@ -50,6 +59,17 @@
       }
     }
 
+    //Input field label styling
+    label {
+      font-size: font-size(font-size-small);
+      color: var(--color-primary);
+      position: absolute;
+      top: -0.2rem;
+      display: block;
+      transition: 0.2s;
+    }
+
+    //Input field focus styling
     input:focus {
       border-width: 0.2rem;
       border-image: linear-gradient(to right, var(--color-tertiary), var(--color-tertiary));
@@ -65,15 +85,6 @@
       }
     }
 
-    label {
-      font-size: font-size(font-size-small);
-      color: var(--color-primary);
-      position: absolute;
-      top: -0.2rem;
-      display: block;
-      transition: 0.2s;
-    }
-
     //if message is invalid styles
     &--invalid {
       textarea {
@@ -84,7 +95,7 @@
       }
     }
 
-    //error message styling
+    //highlight input field when invalid styling
     &--error {
       color: red;
       margin-bottom: 3rem;
@@ -92,14 +103,14 @@
     }
   }
 
-  //********After submission styles for response message***************
+  //############ After submission styles for response message ############
   &__submission-msg {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 
-    //If the post request was successful
+    // ******** Success message ********
     &--success {
       h2,
       i {
@@ -115,7 +126,7 @@
       }
     }
 
-    //If the post request was unsuccessful
+    // ******** If the post request was unsuccessful ********
     &--error {
       h2,
       i {
@@ -131,7 +142,7 @@
       }
     }
 
-    //sending message loading spinner
+    // ******** sending message loading spinner ********
     &--sending {
       h2 {
         color: var(--color-quaternary);
@@ -144,7 +155,7 @@
       }
     }
 
-    //Ok button to reopen the form after submission attempt
+    // ******** Ok button to reopen the form after submission attempt ********
     button {
       cursor: pointer;
       width: 50%;
@@ -163,6 +174,7 @@
     //Form
     width: 70%;
 
+    //############ After submission styles for response message ############
     &__submission-msg {
       h2,
       i {
@@ -180,6 +192,7 @@
     //Form
     width: 85%;
 
+    //############ After submission styles for response message ############
     &__submission-msg {
       h2,
       i {

@@ -2,10 +2,12 @@
 @import '../../variables';
 
 .scroll {
+  // Section
   position: fixed;
   bottom: 2rem;
   left: 2rem;
 
+  // ********* Scroll to top button *********
   &__button {
     width: 4rem;
     height: 4rem;

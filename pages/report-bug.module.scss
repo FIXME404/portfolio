@@ -6,45 +6,17 @@
   text-align: center;
   color: var(--color-primary);
 
-  //Heading
+  // ******** Heading ********
   &__heading {
     font-size: font-size(font-size-xxlarge);
     font-weight: 700;
-    margin: 7rem auto;
-  }
-
-  //Form
-  &__form {
-    width: 50%;
-    margin: 5rem auto 0;
-
-    &--submit-btn {
-      position: relative;
-      cursor: pointer;
-      width: 100%;
-      padding: 1rem;
-      color: white;
-      background-color: var(--color-quaternary);
-      font-size: font-size(font-size-regular);
-      border-radius: 0.7rem;
-      border: none;
-    }
+    padding: 7rem 0 2rem;
   }
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-tablet {
-    margin: 13rem auto;
-    //Form
-    &__form {
-      width: 70%;
+    &__heading {
+      padding: 11rem 0;
     }
   } //End of 800px breakpoint
-
-  // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  @include mixins.media-mobile-large {
-    //Form
-    &__form {
-      width: 85%;
-    }
-  } //End of 600px breakpoint
-} //End of section
+}

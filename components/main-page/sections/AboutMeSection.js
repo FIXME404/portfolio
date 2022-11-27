@@ -1,5 +1,4 @@
 import styles from './AboutMeSection.module.scss';
-import { useEffect } from 'react';
 import 'aos/dist/aos.css';
 import Image from 'next/image';
 import Portrait from '../../../public/imgs/portrait.png';
@@ -15,8 +14,8 @@ function AboutMeSection() {
       {/* Section content */}
       <div className={styles['section__content']}>
         {/* portrait */}
-        <div className={styles['section__content--portrait']} data-aos='flip-right' data-aos-once='true' data-aos-delay='1000000' data-aos-offset='600'>
-          <Image src={Portrait} layout='fill' alt='portrait' data-aos='flip-left' data-aos-once='true' data-aos-delay='1000000' data-aos-offset='600' />
+        <div className={styles['section__content--portrait']}>
+          <Image src={Portrait} layout='fill' alt='portrait' />
         </div>
 
         {/* Top paragraph */}

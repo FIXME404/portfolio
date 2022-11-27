@@ -2,10 +2,11 @@
 @import '../../../styles/font-size';
 
 .showcase-section {
+  // Section
   grid-column: container-start / container-end;
   text-align: center;
 
-  //Heading content
+  // ********Heading content ********
   &__content {
     padding: 7% 0 0 0;
 
@@ -35,8 +36,7 @@
       animation: leftEntrance 1.5s ease-in-out 1s forwards;
     }
 
-    //Learn More Button *-*-*
-
+    // ******** Learn More Button ********
     a:link,
     a:visited {
       color: var(--color-primary);
@@ -48,6 +48,7 @@
       opacity: 0;
       animation: fadeIn 2s ease-in-out 2.7s forwards;
 
+      //Transition effect Learn More button
       &:hover,
       &:active {
         box-shadow: inset -15rem 0 0 0 var(--color-quaternary), inset 15rem 0 0 0 var(--color-quaternary);
@@ -74,6 +75,7 @@
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 480px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-mobile {
+    // ********Heading content ********
     &__content {
       padding: 15rem 1.5rem;
 
@@ -97,6 +99,7 @@
   } //END OF 480px BREAKPOINT
 } //END OF SHOWCASE SECTION
 
+// Right Entrance Animation
 @keyframes rightEntrance {
   0% {
     transform: translateX(105%);
@@ -106,6 +109,7 @@
   }
 }
 
+// Left Entrance Animation
 @keyframes leftEntrance {
   0% {
     transform: translateX(-100%);
@@ -115,6 +119,7 @@
   }
 }
 
+// Fade In Animation
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -124,6 +129,7 @@
   }
 }
 
+// Bottom Entrance Animation
 @keyframes bottomEntrance {
   0% {
     transform: translateY(100%);

@@ -40,18 +40,19 @@ function ContactMeForm() {
   //Message custom hook
   const { input: emailInput, isInputInvalid: isEmailInvalid, handleInputChange: emailChangeHandler, handleInputBlur: emailBlurHandler, reset: emailReset } = useForm(isValidEmail);
 
-  //Close message button handler
+  //Close response message button handler
   const closeMessageHandler = () => {
     dispatchFormState({ type: 'DISPLAY_FORM', boolean: true });
     dispatchFormState({ type: 'SUCCESS', boolean: false });
     dispatchFormState({ type: 'ERROR', boolean: false });
   };
 
-  // Form submission
-  const handleOnSubmit = event => {
+  // Form submission handler
+  const onSubmitHandler = event => {
     event.preventDefault();
 
     if (!isValidEmail(emailInput) || isEmailInvalid) {
+      //If the email is invalid, do not send the form and highlights the email input with red border
       emailBlurHandler();
       return;
     } else {
@@ -67,6 +68,7 @@ function ContactMeForm() {
     dispatchFormState({ type: 'DISPLAY_FORM', boolean: false });
     dispatchFormState({ type: 'SENDING', boolean: true });
 
+    // request sent to contact api file
     const response = await fetch('/api/contact', {
       method: 'POST',
       body: JSON.stringify(input),
@@ -94,9 +96,9 @@ function ContactMeForm() {
   // ternary operator to check if the form is valid
   const messageStateStyle = isEmailInvalid ? styles['form__input--invalid'] : styles['form__input'];
 
-  //Variable to display the form or not
-  const displayForm = formState.displayForm ? (
-    //FORM HTML
+  //Variable to display the form or the response message
+  const displayForm = formState.displayForm && (
+    //FORM HTMLonSubmitHandler
     <>
       {/* name */}
       <div className={styles['form__input']}>
@@ -126,15 +128,14 @@ function ContactMeForm() {
       {/* Submit button */}
       <button className={styles['form__submit-btn']}>Submit</button>
     </>
-  ) : (
-    //Display message based on current form side effect state
-    sideEffectState
   );
 
-  //Switch statement for side effects form state
+  //Switch statement for form side effects state
   let sideEffectState = null;
+
   switch (true) {
     case formState.isSending:
+      // If message is sending
       sideEffectState = (
         <div className={styles['form__submission-msg--sending']}>
           <h2>Sending...</h2>
@@ -142,6 +143,7 @@ function ContactMeForm() {
         </div>
       );
       break;
+    // If message is sent successfully
     case formState.isSuccessful:
       sideEffectState = (
         <div className={styles['form__submission-msg--success']}>
@@ -151,6 +153,7 @@ function ContactMeForm() {
         </div>
       );
       break;
+    // If message is not sent successfully
     case formState.isError:
       sideEffectState = (
         <div className={styles['form__submission-msg--error']}>
@@ -160,20 +163,30 @@ function ContactMeForm() {
         </div>
       );
       break;
+    // If none of the above
     default:
-      <div className={styles['form__submission-msg--error']}>
-        <h2>Error!</h2>
-        <p>There has been an error. Please, try again.</p>
-        <i className='fa-solid fa-exclamation'></i>
-      </div>;
+      sideEffectState = (
+        <div className={styles['form__submission-msg--error']}>
+          <h2>Error!</h2>
+          <p>There has been an error. Please, try again.</p>
+          <i className='fa-solid fa-exclamation'></i>
+        </div>
+      );
   }
 
   return (
-    <form onSubmit={handleOnSubmit} className={styles['form']} ref={formRef}>
+    <form onSubmit={onSubmitHandler} className={styles['form']} ref={formRef}>
+      {/* Display form or not */}
       {displayForm}
+
+      {/* If form is not being displayed, display the side effect message with an ok button if message is not being sent */}
       {!formState.displayForm && (
         <div className={styles['form__submission-msg']}>
-          {sideEffectState} {!formState.isSending && <button onClick={closeMessageHandler}>OK</button>}
+          {/* side effect state elements */}
+          {sideEffectState}
+
+          {/* If message is not being sent, display the ok button */}
+          {!formState.isSending && <button onClick={closeMessageHandler}>OK</button>}
         </div>
       )}
     </form>

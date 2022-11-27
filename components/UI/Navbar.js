@@ -33,19 +33,20 @@ function Navbar(props) {
 
   //Navbar links array mapping
   const linksArray = props.links.map((link, index) => {
+    // If the link is a routing link
     if (link.path !== undefined && link.path !== null) {
       return (
         <li key={index} className={styles['header__nav--links__items']}>
           <Link href={link.path}>{link.name}</Link>
         </li>
       );
-    } else {
-      return (
-        <li key={index} className={styles['header__nav--links__items']}>
-          <a href={link.link}>{link.name}</a>
-        </li>
-      );
     }
+    // Else if the link is an anchor link
+    return (
+      <li key={index} className={styles['header__nav--links__items']}>
+        <a href={link.link}>{link.name}</a>
+      </li>
+    );
   });
 
   return (

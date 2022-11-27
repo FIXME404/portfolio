@@ -2,23 +2,24 @@
 @import '../../../styles/font-size';
 
 .section {
+  //Section
   grid-column: container-start / container-end;
   text-align: center;
   margin: 10rem 0;
   color: var(--color-primary);
 
-  //H2 Heading
+  // ******** h2 Heading ********
   &__heading {
     font-size: font-size(font-size-large);
     font-weight: 600;
     margin-bottom: 8rem;
   }
 
-  //Section content
+  // ############ Section content ############
   &__projects {
     padding: 0 1.5rem;
 
-    //Project item
+    // ********* Project item *********
     &--project {
       display: grid;
       grid-template-columns: [col-1] 1fr [col-2] 1.5fr [col-3];
@@ -101,7 +102,7 @@
       } // End of project description
     } //end of project item
 
-    //To Testimonials Button *-*-*
+    // ********* To Testimonials Button *********
     &--button:link,
     &--button:visited {
       position: relative;
@@ -141,11 +142,14 @@
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-tablet {
+    // ******** h2 Heading ********
     &__heading {
       font-size: font-size(font-size-medium);
     }
 
+    // ############ Section content ############
     &__projects {
+      // ********* Project item *********
       &--project {
         display: flex;
         flex-direction: column;
@@ -153,11 +157,13 @@
         justify-content: center;
         margin: 1rem 0 8rem;
 
+        // Project's img
         &__img {
           width: 50%;
           margin: 0;
         }
 
+        // Project's info
         &__info {
           a {
             width: 60%;
@@ -169,19 +175,25 @@
 
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 600px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-mobile-large {
+    // ############ Section content ############
     &__projects {
+      // ********* Project item *********
       &--project {
         padding: 0.5rem;
+
+        // Project's name
         &__name {
           font-size: font-size(font-size-regular);
         }
 
+        // Project's img
         &__img {
           width: 90%;
           margin: 0;
           height: 35vw;
         }
 
+        // Project's info
         &__info {
           a {
             width: 110%;

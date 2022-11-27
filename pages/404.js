@@ -2,6 +2,7 @@ import styles from './Page404.module.scss';
 import Navbar from '../components/UI/Navbar';
 
 function Page404() {
+  //Navbar links array
   const navbarLinks = [
     { path: '/', name: 'Home' },
     { path: '/report-bug', name: 'Report Bug' }
@@ -9,7 +10,10 @@ function Page404() {
 
   return (
     <section className={styles['section']}>
+      {/* Navbar */}
       <Navbar links={navbarLinks} />
+
+      {/* Content */}
       <div className={styles['section__content']}>
         <h1>{`< 404 >`}</h1>
         <h2>Page Not Found</h2>

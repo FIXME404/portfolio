@@ -1,7 +1,6 @@
 import styles from './ContactSection.module.scss';
-import { memo } from 'react';
-import aos from 'aos';
 import 'aos/dist/aos.css';
+import { memo } from 'react';
 import ContactMeForm from '../../forms/ContactMeForm';
 
 function ContactSection() {

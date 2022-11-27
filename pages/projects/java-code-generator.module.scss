@@ -63,13 +63,14 @@
         font-weight: 400;
         color: white;
         background: var(--color-tertiary);
-        border: 0.1rem solid var(--color-tertiary);
+        border: 1px solid transparent;
         border-radius: 0.4rem;
         cursor: pointer;
         transition: all 0.2s ease-in-out;
 
         &:hover {
           background: transparent;
+          border: 1px solid var(--color-primary);
           color: var(--color-primary);
         }
       }
