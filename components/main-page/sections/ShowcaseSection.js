@@ -6,7 +6,7 @@ function ShowcaseSection() {
 
   //Navbar links array
   const navLinks = [
-    { link: '#projects-section', name: 'Projects' },
+    { link: '#projects', name: 'Projects' },
     { link: '#about-me', name: 'About Me' },
     { link: '#contact-me', name: 'Contact Me' },
     { path: 'report-bug', name: 'Report Bug' }

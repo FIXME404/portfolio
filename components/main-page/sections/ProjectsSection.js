@@ -32,8 +32,8 @@ function ProjectsSection() {
           </div>
         </div>
 
-        {/* To testimonials button */}
-        <a href='#testimonials' className={styles['section__projects--button']}>
+        {/* To contact-me button */}
+        <a href='#contact-me' className={styles['section__projects--button']}>
           Should we connect?
         </a>
       </div>

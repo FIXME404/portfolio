@@ -32,8 +32,8 @@ function AboutMeSection() {
         </div>
 
         {/* Button */}
-        <a href='#projects'>
-          <span>Let&apos;s look at my projects</span>
+        <a href='#projects' className={styles['section__content--button']}>
+          Let&apos;s look at my projects
         </a>
       </div>
     </section>
