@@ -8,7 +8,7 @@ function AboutMeSection() {
   const closingTagText = `</>`;
 
   return (
-    <section className={styles['section']} data-aos='fade-up' data-aos-once='true' data-aos-offset='500' id='about-me' data-aos-duration='2000' data-aos-easing='ease-in-out-cubic'>
+    <section className={styles['section']} data-aos='fade-up' data-aos-once='true' data-aos-offset='50' id='about-me' data-aos-duration='2000' data-aos-easing='ease-in-out-cubic'>
       {/* Heading */}
       <h2 className={styles['section__heading']}>Hello. I am Bryan.</h2>
       {/* Section content */}
@@ -20,13 +20,13 @@ function AboutMeSection() {
 
         {/* Top paragraph */}
         <div className={styles['section__content--para']}>
-          <p>I am an enthustiastic Web Developer that creates Websites using</p>
+          <p>I am New York based and build websites using</p>
           <span>{openingTagText}</span> React, SCSS, NodeJS, NextJS, and MongoDB. <span>{closingTagText}</span>
         </div>
 
         {/* Bottom paragraph */}
         <div className={styles['section__content--para']}>
-          <p>I currently attend Nassau Community College.</p>
+          <p>I currently attend Columbia University.</p>
           <p>I study</p>
           <span>{openingTagText}</span> Computer Science. <span>{closingTagText}</span>
         </div>

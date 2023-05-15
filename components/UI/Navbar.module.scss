@@ -27,7 +27,8 @@
     bottom: 0;
     margin: auto;
     transition: all 0.5s ease-in-out;
-  } //End of Hamburger Lines
+  }
+
   //Right Side entrance on loading
   animation: fadeIn 0.5s ease-in-out;
 
@@ -92,6 +93,10 @@
         a:after {
           content: '>';
           right: 2rem;
+        }
+
+        a:hover {
+          color: var(--color-quaternary);
         }
 
         a:hover:before {

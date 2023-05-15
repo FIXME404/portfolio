@@ -22,12 +22,10 @@
 
     //Image
     &--img {
-      position: relative;
+      align-self: center;
       margin: 5rem auto;
-      max-width: 110rem;
-      height: 30vw;
+      overflow: hidden;
       box-shadow: 0 0 2rem rgba(0, 0, 0, 0.15);
-      background-color: transparent;
       transition: all 0.4s ease-out;
     }
 
@@ -54,7 +52,7 @@
     &--link-btn {
       a {
         display: block;
-        width: 55%;
+        width: 40%;
         margin: 3rem auto;
         padding: 0.5rem;
         font-size: font-size(font-size-extra-small);

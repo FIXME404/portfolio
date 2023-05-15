@@ -27,7 +27,7 @@ function JavaGeneratorPage() {
 
         {/* Project's image */}
         <div className={styles['page-section__content--img']}>
-          <Image src={javaCodeGenerator} layout='fill' alt='Java Code Generator Website' />
+          <Image src={javaCodeGenerator} layout='fill' alt='Java Code Generator Website' objectFit='fill' />
         </div>
 
         {/* Brief description of the project. */}

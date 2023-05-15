@@ -1,5 +1,7 @@
 import styles from './ShowcaseSection.module.scss';
 import Navbar from '../../../components/UI/Navbar';
+import Image from 'next/image';
+import Logo from '../../../public/imgs/logo.png';
 
 function ShowcaseSection() {
   const welcomeText = '< Welcome >';
@@ -22,6 +24,11 @@ function ShowcaseSection() {
         <h2>{welcomeText}</h2>
         <h1>I’m a React Web Developer.</h1>
         <h3>I make front-end Websites.</h3>
+
+        {/* React logo */}
+        <div className={styles['showcase-section__content--logo']}>
+          <Image src={Logo} layout='fill' alt='logo' objectFit='cover' />
+        </div>
 
         {/* Button */}
         <a href='#about-me'>Learn More</a>
