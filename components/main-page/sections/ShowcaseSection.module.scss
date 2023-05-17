@@ -10,16 +10,20 @@
   &__content {
     padding: 6% 0 0 0;
 
-    h1 {
+    &--title {
       font-size: font-size(font-size-xxlarge);
       color: var(--color-primary);
       margin-bottom: 2rem;
       font-weight: 800;
       transform: translateX(105%);
       animation: rightEntrance 1.5s ease-in-out 1s forwards;
+
+      span {
+        color: var(--color-quaternary);
+      }
     }
 
-    h2 {
+    &--welcome {
       font-size: font-size(font-size-xlarge);
       font-weight: 600;
       color: var(--color-primary);
@@ -27,7 +31,7 @@
       animation: fadeIn 1.8s ease-in-out;
     }
 
-    h3 {
+    &--subtitle {
       font-size: font-size(font-size-large);
       font-weight: 400;
       color: var(--color-primary);
@@ -39,9 +43,11 @@
     &--logo {
       position: relative;
       opacity: 0;
-      width: 30rem;
-      height: 30rem;
-      margin: 0 auto;
+      object-fit: cover;
+      overflow: hidden;
+      width: 25rem;
+      height: 25rem;
+      margin: 2rem auto;
       animation: fadeIn 2s ease-in-out 3s forwards;
     }
 
@@ -70,19 +76,16 @@
   // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ The 800px Mark Breakpoint @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   @include mixins.media-tablet {
     &__content {
-      padding: 15rem 0 0 0;
+      padding: 15rem 0 0;
 
-      h1 {
-        margin-bottom: 3rem;
-      }
-
-      h2 {
-        margin-bottom: 8rem;
+      &--title {
+        margin: 8.5rem 0 4rem;
       }
 
       &--logo {
         width: 20rem;
         height: 20rem;
+        margin: 6rem auto 8rem;
       }
     } //end of content
   } //END OF 800px BREAKPOINT
@@ -91,23 +94,30 @@
   @include mixins.media-mobile {
     // ********Heading content ********
     &__content {
-      padding: 8rem 1.5rem;
+      padding: 7rem 0.13rem;
 
-      h1 {
+      &--title {
+        font-size: 2.3rem;
+        margin: 3rem 0;
+      }
+
+      &--welcome {
         font-size: 2rem;
       }
 
-      h2 {
+      &--subtitle {
         font-size: 1.5rem;
       }
 
-      h3 {
-        font-size: 1.2rem;
+      &--logo {
+        width: 15rem;
+        height: 15rem;
+        margin: 5rem auto 7rem;
       }
 
       a:link,
       a:visited {
-        font-size: 1.2rem;
+        font-size: 1.7rem;
       }
     }
   }

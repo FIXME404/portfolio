@@ -6,6 +6,10 @@ import javaCodeGeneratorImg from '../../../public/imgs/java_code_generator.png';
 import nestAppImg from '../../../public/imgs/nest_app.png';
 
 function ProjectsSection() {
+  const imageStyles = {
+    objectFit: 'contain'
+  };
+
   return (
     <section id='projects' className={styles['section']}>
       {/* Section heading */}
@@ -20,7 +24,7 @@ function ProjectsSection() {
 
           {/* ^^^^^^^ Left side Project image ^^^^^^^ */}
           <div className={styles['section__projects--project__img']}>
-            <Image src={javaCodeGeneratorImg} alt='Java Code Generator' layout='fill' objectFit='contain' />
+            <Image src={javaCodeGeneratorImg} alt='Java Code Generator' fill style={imageStyles} />
           </div>
 
           {/* ^^^^^^^ Right Side ^^^^^^^ */}
@@ -52,15 +56,15 @@ function ProjectsSection() {
 
           {/* ^^^^^^^ Right side Project image ^^^^^^^ */}
           <div className={styles['section__projects--project__img']}>
-            <Image src={nestAppImg} alt='NCC Nest app' layout='fill' objectFit='contain' />
+            <Image src={nestAppImg} alt='NCC Nest app' fill style={imageStyles} />
           </div>
         </div>
-
-        {/* To contact-me button */}
-        <a href='#contact-me' className={styles['section__projects--button']}>
-          Should we connect?
-        </a>
       </div>
+
+      {/* To contact-me button */}
+      <a href='#contact-me' className={styles['section__projects--button']}>
+        Should we connect?
+      </a>
     </section>
   );
 }

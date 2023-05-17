@@ -14,6 +14,11 @@ function ShowcaseSection() {
     { path: 'report-bug', name: 'Report Bug' }
   ];
 
+  // image styles
+  const imageStyles = {
+    objectFit: 'cover'
+  };
+
   return (
     <section id='showcase' className={styles['showcase-section']}>
       {/* Navbar */}
@@ -21,13 +26,15 @@ function ShowcaseSection() {
 
       {/* Headings */}
       <div className={styles['showcase-section__content']}>
-        <h2>{welcomeText}</h2>
-        <h1>I’m a React Web Developer.</h1>
-        <h3>I make front-end Websites.</h3>
+        <h2 className={styles['showcase-section__content--welcome']}>{welcomeText}</h2>
+        <h1 className={styles['showcase-section__content--title']}>
+          I’m a <span>React</span> Web Developer.
+        </h1>
+        <h3 className={styles['showcase-section__content--subtitle']}>I make Full-stack Websites.</h3>
 
         {/* React logo */}
         <div className={styles['showcase-section__content--logo']}>
-          <Image src={Logo} layout='fill' alt='logo' objectFit='cover' />
+          <Image src={Logo} alt='logo' fill style={imageStyles} />
         </div>
 
         {/* Button */}

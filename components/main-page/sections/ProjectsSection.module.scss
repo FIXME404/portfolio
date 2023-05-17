@@ -17,7 +17,7 @@
 
   // ############ Section content ############
   &__projects {
-    margin: 0 1.5rem 8rem;
+    margin: 0 1.5rem 10rem;
 
     // ********* Project item *********
     &--project {
@@ -25,7 +25,7 @@
       grid-template-columns: [col-1] 1fr [col-2] 1.5fr [col-3];
       grid-gap: 2rem;
       padding: 0 1.8rem;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
       border-radius: 1rem;
       background-color: var(--color-secondary);
       box-shadow: -1rem 1rem 2rem rgba(0, 0, 0, 0.4);
@@ -97,7 +97,7 @@
           background-color: transparent;
           border: 0.1rem solid var(--color-primary);
           box-shadow: 1rem 0.5rem 2rem rgba(0, 0, 0, 0.2);
-          border-radius: 1rem;
+          border-radius: 0.5rem;
           width: 40%;
           transition: all 0.2s ease-in-out;
 
@@ -115,7 +115,7 @@
       }
     }
 
-    // ********* To Projects Button *********
+    // ********* To Contact form Button *********
     &--button:link,
     &--button:visited {
       position: relative;
